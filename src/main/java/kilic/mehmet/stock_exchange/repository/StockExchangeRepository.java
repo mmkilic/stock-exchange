@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import kilic.mehmet.stock_exchange.entity.StockProperties;
+import kilic.mehmet.stock_exchange.entity.StockExchange;
 
 @Repository
-public interface StockPropertiesRepository extends JpaRepository<StockProperties, Integer> {
+public interface StockExchangeRepository extends JpaRepository<StockExchange, Integer> {
 	
-	@Query("SELECT s from StockProperties s where s.name=(:name)")
-	Optional<StockProperties> getStockProperties(@Param("name") String name);
+	@Query("SELECT se from StockExchange se where se.name=(:name)")
+	Optional<StockExchange> getStockExchangeByName(@Param("name") String name);
+	
 }

@@ -12,13 +12,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import kilic.mehmet.stock_exchange.entity.request.StockPropertiesRequest;
+import kilic.mehmet.stock_exchange.entity.request.StockRequest;
 import lombok.Data;
 
 @Entity
 @Table
 @Data
-public class StockProperties {
+public class Stock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -33,12 +33,12 @@ public class StockProperties {
 	
 	@JsonIgnore
 	@ManyToOne
-	private StockExchangeProperties stockExchangeProperties;
+	private StockExchange stockExchange;
 	
-	public StockProperties update(StockPropertiesRequest spr) {
-		this.name = spr.getName();
-		this.description = spr.getDescription();
-		this.currentPrice = spr.getCurrentPrice();
+	public Stock update(StockRequest sr) {
+		this.name = sr.getName();
+		this.description = sr.getDescription();
+		this.currentPrice = sr.getCurrentPrice();
 		this.lastUpdate = LocalDateTime.now();
 		return this;
 	}

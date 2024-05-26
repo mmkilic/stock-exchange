@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StockPropertiesRequest {
+public class StockRequest {
 	private String name;
 	private String description;
 	private double currentPrice;

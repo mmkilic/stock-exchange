@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class StockExchangeProperties {
+public class StockExchange {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -24,7 +24,7 @@ public class StockExchangeProperties {
 	private String description;
 	private boolean liveInMarket;
 	
-	@OneToMany(mappedBy = "stockExchangeProperties")
-	private List<StockProperties> stockProperties = new Vector<StockProperties>(); 
+	@OneToMany(mappedBy = "stockExchange")
+	private List<Stock> stocks = new Vector<Stock>(); 
 	
 }
