@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kilic.mehmet.stock_exchange.entity.AppUser;
@@ -28,12 +27,6 @@ public class AppUserController {
 	public ResponseEntity<List<AppUser>> getAll() {
 		return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
 	}
-
-	@GetMapping("/user-email")
-	public ResponseEntity<AppUser> getByEmail(@RequestParam String email) {
-		return new ResponseEntity<>(userService.getByEmail(email), HttpStatus.OK);
-	}
-	
 	
 	@PostMapping
 	public ResponseEntity<AppUser> create(@RequestBody UserCreateRequest userRequest) {

@@ -1,5 +1,6 @@
 package kilic.mehmet.stock_exchange.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +25,15 @@ public class StockService {
 	@Transactional
 	public Stock createStock(StockRequest stockRequest) {
 		return stockRepo.save(new Stock().update(stockRequest));
+	}
+	
+	@Transactional
+	public Stock updateStock(Stock stockInput) {
+		var stock = stockRepo.getStockByName(stockInput.getName())
+				.orElseThrow(()-> new BadRequestException("Missing Stock"));
+		stock.setCurrentPrice(stockInput.getCurrentPrice());
+		stock.setLastUpdate(LocalDateTime.now());
+		return stockRepo.save(stock);
 	}
 	
 	@Transactional

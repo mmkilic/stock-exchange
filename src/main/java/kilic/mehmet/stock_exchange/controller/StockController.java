@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,13 +30,18 @@ public class StockController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Stock> createStock(@RequestBody StockRequest stockProperyRequest){
-		return new ResponseEntity<>(stockService.createStock(stockProperyRequest), HttpStatus.OK);
+	public ResponseEntity<Stock> createStock(@RequestBody StockRequest stockRequest){
+		return new ResponseEntity<>(stockService.createStock(stockRequest), HttpStatus.OK);
+	}
+	
+	@PutMapping
+	public ResponseEntity<Stock> updateStock(@RequestBody Stock stock){
+		return new ResponseEntity<>(stockService.updateStock(stock), HttpStatus.OK);
 	}
 	
 	@DeleteMapping
-	public ResponseEntity<Boolean> deleteStock(@RequestBody Stock stockPropery){
-		return new ResponseEntity<>(stockService.deleteStock(stockPropery), HttpStatus.OK);
+	public ResponseEntity<Boolean> deleteStock(@RequestBody Stock stock){
+		return new ResponseEntity<>(stockService.deleteStock(stock), HttpStatus.OK);
 	}
 	
 }

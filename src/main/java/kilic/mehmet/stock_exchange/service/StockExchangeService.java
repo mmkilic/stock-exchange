@@ -23,7 +23,8 @@ public class StockExchangeService {
 		return stockExchRepo.findAll();
 	}
 	public StockExchange getStockExchangeByName(String name) {
-		return stockExchRepo.getStockExchangeByName(name).orElseThrow(()-> new BadRequestException("Missing Stock Exchange"));
+		return stockExchRepo.getStockExchangeByName(name)
+				.orElseThrow(()-> new BadRequestException("Missing Stock Exchange"));
 	}
 	
 	@Transactional

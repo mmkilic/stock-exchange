@@ -12,7 +12,6 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import kilic.mehmet.stock_exchange.entity.AppUser;
 import kilic.mehmet.stock_exchange.entity.request.UserCreateRequest;
-import kilic.mehmet.stock_exchange.exception.BadRequestException;
 import kilic.mehmet.stock_exchange.repository.AppUserRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -25,10 +24,6 @@ public class AppUserService implements UserDetailsService{
 	
 	public List<AppUser> getAll() {
 		return userRepo.findAll();
-	}
-	
-	public AppUser getByEmail(String email) {
-		return userRepo.getByEmail(email).orElseThrow(() -> new BadRequestException("User with email " +email+ " not found."));
 	}
 	
 	@Transactional
